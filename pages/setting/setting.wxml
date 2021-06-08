@@ -1,0 +1,65 @@
+<!--pages/edit/edit.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<!--<view class="weui-cells__title">选择星期</view>-->
+<view class="page">
+  <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <!--
+    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+      <view class="weui-label">星期</view>
+    </view>
+    -->
+        <view class="weui-cell__bd">
+          <picker mode="selector" bindchange="bindWeekChange" value="{{weekIndex}}" range="{{weeks}}">
+            <view class="weui-select">{{weeks[weekIndex]}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_select">
+        <!--
+    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+      <view class="weui-label">课时</view>
+    </view>
+    -->
+        <view class="weui-cell__bd">
+          <picker mode="selector" bindchange="bindCourseTimeChange" value="{{courseTimeIndex}}" range="{{courseTime}}">
+            <view class="weui-select">{{courseTime[courseTimeIndex]}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <mp-cells>
+      <mp-checkbox-group prop="radio" multi="{{false}}" bindchange="radioChange">
+        <mp-checkbox wx:for="{{radioItems}}" wx:key="value" label="{{item.name}}" value="{{item.value}}"
+          checked="{{item.checked}}"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+  </mp-form>
+
+  <view class="weui-cells__title">课程名称</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <input bindinput="courseName" name="input" maxlength="7" class="weui-input" placeholder="请尽可能用简称代替（毛概诚信101）" />
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title">课程详情</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea bindinput="courseDetail" name="textarea" class="weui-textarea" placeholder="备注，可输入任课老师、具体上下课时间等相关信息" style="height: 3.3em" />
+        <!--<view class="weui-textarea-counter">0/200</view>-->
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="submitForm">保存</button>
+  </view>
+
+</view>

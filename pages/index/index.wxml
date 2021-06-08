@@ -1,0 +1,126 @@
+<!--pages/index/index.wxml-->
+<view class="page">
+  <view class="btu-area">
+    <view class="page-top {{menuOpen ? 'c-state' : ''}}">
+      <image class="menu" src="/ico/menu_32px.png" bindtap="onClick_menu" hidden="{{menuHidden}}"></image>
+      <!-- <button form-type="submit" size="mini" hidden="{{saveButtonHidden}}" type="primary"
+        style="left:250px;">保存</button> -->
+    </view>
+  </view>
+  <view class="slidebar" hidden="{{slidebarHidden}}">
+    <view class="slidebar-list">
+      <view class="slidebar-content">
+        <text bindtap="onClick_edit" class="text">编辑</text>
+      </view>
+      <view class="slidebar-content">
+        <text bindtap="onClick_setting" class="text">设置</text>
+      </view>
+      <view class="slidebar-content">
+        <text bindtap="onClick_login" class="text">登录</text>
+      </view>
+    </view>
+  </view>
+
+
+
+  <view class="content">
+    <scroll-view scroll-y="true" scroll-x="true">
+      <view class="weui-flex">
+        <view class="weui-flex__item">
+          <view
+            style="margin: 5px;padding: 0 10px;text-align: center;background-color: var(--weui-BG-0);height: 2.3em;line-height: 2.3em;color: var(--weui-FG-1);width: 15px;">
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder-week" style="background-color:{{placeholder_color_7}}">日</view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder-week" style="background-color:{{placeholder_color_1}}">一</view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder-week" style="background-color:{{placeholder_color_2}}">二</view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder-week" style="background-color:{{placeholder_color_3}}">三</view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder-week" style="background-color:{{placeholder_color_4}}">四</view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder-week" style="background-color:{{placeholder_color_5}}">五</view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder-week" style="background-color:{{placeholder_color_6}}">六</view>
+        </view>
+      </view>
+
+      <view class='line'></view>
+
+      <view class="weui-flex">
+        <view class="weui-flex__item">
+          <view wx:for="{{array_time}}" wx:for-item="itemName" class="placeholder-time" wx:for-index="idx">
+            {{itemName}}
+            <view wx:if="{{idx==1}}"
+              style="width: 430px;height: 3px;background-color: #FF8C00;position:relative;top:13px;"></view>
+            <!-- <textarea style="width:15px"
+              disabled="{{textareaDisabled}}" value="{{itemName}}" /> -->
+          </view>
+
+        </view>
+
+        <view class="weui-flex__item">
+          <view wx:for="{{12}}" wx:for-item="i" class="placeholder-course">
+            <rich-text style="font-size:15px;line-height: 1.8em;text-overflow:ellipsis;">{{i+1}}</rich-text>
+          </view>
+
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder-course">
+            <rich-text style="font-size:15px;line-height: 1.8em;text-overflow:ellipsis;">数学诚信102</rich-text>
+          </view>
+        </view>
+
+        <view class="weui-flex__item">
+          <view class="placeholder-course" wx:for="{{array_course_2}}" wx:for-item="i">
+            <rich-text style="font-size:15px;line-height: 1.8em;text-overflow:ellipsis;">{{i}}</rich-text>
+          </view>
+        </view>
+
+        <view class="weui-flex__item">
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder-course">毛概</view>
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+          <view class="placeholder-course"></view>
+        </view>
+      </view>
+      <view class='line'></view>
+    </scroll-view>
+
+  </view>
+
+  <view class="weui-footer weui-footer_fixed-bottom">
+    <view class="weui-footer__text">Project maintained by Juice.</view>
+  </view>
+</view>

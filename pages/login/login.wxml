@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view><text>\n</text></view>
+  <form bindsubmit="formSubmit">
+    <view class="input-area">
+      <input class="weui-input" style="margin: 40rpx 0" name="stu_num" placeholder="学号" />
+      <input class="weui-input" style="margin: 40rpx 0" name="stu_name" placeholder="姓名" />
+    </view>
+
+    <view class="btu-area">
+      <button style="font-size:15px;margin: 40rpx 0" type="primary" form-type="submit">Submit</button>
+      <button style="font-size:15px;margin: 40rpx 0" bindtap="skipTap">Skip</button>
+    </view>
+  </form>
+</view>
