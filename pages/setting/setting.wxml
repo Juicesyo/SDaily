@@ -1,7 +1,7 @@
 <!--pages/edit/edit.wxml-->
 <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
 <!--<view class="weui-cells__title">选择星期</view>-->
-<view class="page">
+<view class="setting-page">
   <mp-form id="form" rules="{{rules}}" models="{{formData}}">
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_select">
@@ -52,7 +52,8 @@
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell">
       <view class="weui-cell__bd">
-        <textarea bindinput="courseDetail" name="textarea" class="weui-textarea" placeholder="备注，可输入任课老师、具体上下课时间等相关信息" style="height: 3.3em" />
+        <textarea bindinput="courseDetail" name="textarea" class="weui-textarea" placeholder="备注，可输入任课老师、具体上下课时间等相关信息"
+          style="height: 3.3em" />
         <!--<view class="weui-textarea-counter">0/200</view>-->
       </view>
     </view>
@@ -62,4 +63,15 @@
     <button class="weui-btn" type="primary" bindtap="submitForm">保存</button>
   </view>
 
+</view>
+<view class="all-setting-page">
+  <view class="weui-cells__title">全局设置（自动保存）</view>
+  <view class="weui-cells__title">当前周数</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <input bindinput="week" name="input" maxlength="2" class="weui-input" type="number" placeholder="手动设置当前为第几周" value="{{weekValue}}"/>
+      </view>
+    </view>
+  </view>
 </view>

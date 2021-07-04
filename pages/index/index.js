@@ -1,7 +1,46 @@
 // pages/index/index.js
-var date_week = require('../../utils/util').getWeekByDate(new Date());
-Page({
+var time = require('../../utils/util');
+var date_week = time.getWeekByDate(new Date());
+var today = time.formatDate(new Date());
+var sd; //单双周
 
+function getWeek() {
+  var week = wx.getStorageSync('week'); //周数
+  var date = wx.getStorageSync('date'); //周数修改日期
+  if (week == '') {
+    week = '1';
+    wx.setStorageSync('week', '1');
+    wx.setStorageSync('date', today);
+  } else if (date_week == 1 && date != today) {
+    week = parseInt(week) + 1;
+    wx.setStorageSync('week', week);
+    wx.setStorageSync('date', today);
+  }
+
+  if (week % 2 == 0) {
+    sd = "双周";
+  } else {
+    sd = "单周";
+  }
+  wx.setNavigationBarTitle({
+    title: "第" + week + "周" + "（" + sd + "）",
+  })
+}
+
+var data = {};
+
+function getData() {
+  if (sd == "单周") {
+    data = wx.getStorageSync('单周课表')
+  } else {
+    data = wx.getStorageSync('双周课表')
+  }
+}
+
+getWeek();
+getData();
+
+Page({
   /**
    * 页面的初始数据
    */
@@ -11,23 +50,21 @@ Page({
     // textareaDisabled: true,
     menuOpen: false,
     slidebarHidden: true,
-    array_time:['上午一二', '三四节课', '下午五六', '七八节课', '自习九十','十十一']
+    array_time: ['上午一二', '三四节课', '下午五六', '七八节课', '自习九十', '十十一'],
+
+    array_course_7: data['星期日'],
+    array_course_1: data['星期一'],
+    array_course_2: data['星期二'],
+    array_course_3: data['星期三'],
+    array_course_4: data['星期四'],
+    array_course_5: data['星期五'],
+    array_course_6: data['星期六']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // try {
-    //   this.setData({
-    //     array_time: (wx.getStorage('arrayTime'))
-    //   })
-    // } finally {
-    //   this.setData({
-    //     array_time: ['', '', '', '', '']
-    //   })
-    // }
-
     switch (Number(date_week)) {
       case 7:
         this.setData({
@@ -66,17 +103,8 @@ Page({
         break;
     }
 
-    var week = 13;
-    var sd; //单双周
-    if (week % 2 == 0) {
-      sd = "双周"
-    } else {
-      sd = "单周"
-    }
-    wx.setNavigationBarTitle({
-      title: "第" + week + "周" + "（" + sd + "）",
-    })
   },
+
   // onClick_edit() {
   //   this.setData({
   //     textareaDisabled: false,
@@ -101,7 +129,11 @@ Page({
       url: '../login/login',
     })
   },
-
+  onClick_more() {
+    wx.navigateTo({
+      url: '../more/more',
+    })
+  },
   onClick_menu() {
     if (this.data.menuOpen) {
       this.setData({
@@ -114,6 +146,19 @@ Page({
         slidebarHidden: false
       });
     }
+  },
+  onClick_refresh() {
+    getWeek();
+    getData();
+    this.setData({
+      array_course_7: data['星期日'],
+      array_course_1: data['星期一'],
+      array_course_2: data['星期二'],
+      array_course_3: data['星期三'],
+      array_course_4: data['星期四'],
+      array_course_5: data['星期五'],
+      array_course_6: data['星期六']
+    })
   },
   // saveButton(e) {
   //   console.log('get' , e.detail.value)

@@ -3,6 +3,8 @@
   <view class="btu-area">
     <view class="page-top {{menuOpen ? 'c-state' : ''}}">
       <image class="menu" src="/ico/menu_32px.png" bindtap="onClick_menu" hidden="{{menuHidden}}"></image>
+      <button bindtap="onClick_refresh" size="mini" type="primary"
+        style="float:right">刷新</button>
       <!-- <button form-type="submit" size="mini" hidden="{{saveButtonHidden}}" type="primary"
         style="left:250px;">保存</button> -->
     </view>
@@ -10,13 +12,13 @@
   <view class="slidebar" hidden="{{slidebarHidden}}">
     <view class="slidebar-list">
       <view class="slidebar-content">
-        <text bindtap="onClick_edit" class="text">编辑</text>
-      </view>
-      <view class="slidebar-content">
         <text bindtap="onClick_setting" class="text">设置</text>
       </view>
       <view class="slidebar-content">
         <text bindtap="onClick_login" class="text">登录</text>
+      </view>
+      <view class="slidebar-content">
+        <text bindtap="onClick_more" class="text">更多</text>
       </view>
     </view>
   </view>
@@ -69,14 +71,14 @@
         </view>
 
         <view class="weui-flex__item">
-          <view wx:for="{{12}}" wx:for-item="i" class="placeholder-course">
-            <rich-text style="font-size:15px;line-height: 1.8em;text-overflow:ellipsis;">{{i+1}}</rich-text>
+          <view class="placeholder-course" wx:for="{{array_course_7}}" wx:for-item="i">
+            <rich-text style="font-size:15px;line-height: 1.8em;text-overflow:ellipsis;">{{i}}</rich-text>
           </view>
-
         </view>
+
         <view class="weui-flex__item">
-          <view class="placeholder-course">
-            <rich-text style="font-size:15px;line-height: 1.8em;text-overflow:ellipsis;">数学诚信102</rich-text>
+          <view class="placeholder-course" wx:for="{{array_course_1}}" wx:for-item="i">
+            <rich-text style="font-size:15px;line-height: 1.8em;text-overflow:ellipsis;">{{i}}</rich-text>
           </view>
         </view>
 
@@ -87,32 +89,24 @@
         </view>
 
         <view class="weui-flex__item">
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
+          <view class="placeholder-course" wx:for="{{array_course_3}}" wx:for-item="i">
+            <rich-text style="font-size:15px;line-height: 1.8em;text-overflow:ellipsis;">{{i}}</rich-text>
+          </view>
         </view>
         <view class="weui-flex__item">
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
+          <view class="placeholder-course" wx:for="{{array_course_4}}" wx:for-item="i">
+            <rich-text style="font-size:15px;line-height: 1.8em;text-overflow:ellipsis;">{{i}}</rich-text>
+          </view>
         </view>
         <view class="weui-flex__item">
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
+          <view class="placeholder-course" wx:for="{{array_course_5}}" wx:for-item="i">
+            <rich-text style="font-size:15px;line-height: 1.8em;text-overflow:ellipsis;">{{i}}</rich-text>
+          </view>
         </view>
         <view class="weui-flex__item">
-          <view class="placeholder-course">毛概</view>
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
-          <view class="placeholder-course"></view>
+          <view class="placeholder-course" wx:for="{{array_course_6}}" wx:for-item="i">
+            <rich-text style="font-size:15px;line-height: 1.8em;text-overflow:ellipsis;">{{i}}</rich-text>
+          </view>
         </view>
       </view>
       <view class='line'></view>

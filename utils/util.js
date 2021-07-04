@@ -13,6 +13,12 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : `0${n}`
 }
+const formatDate = date =>{
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return `${[year, month, day].map(formatNumber).join('/')}`
+}
 
 const getWeekByDate = dates => {
   let show_day = new Array('7', '1', '2', '3', '4', '5', '6');
@@ -24,5 +30,6 @@ const getWeekByDate = dates => {
 
 module.exports = {
   formatTime,
+  formatDate,
   getWeekByDate
 }
